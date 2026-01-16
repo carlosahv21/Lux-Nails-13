@@ -1,0 +1,97 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="overflow-x-hidden">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <!-- Preload Critical Assets -->
+        <link
+            rel="preload"
+            href="/gallery-11.jpeg"
+            as="image"
+            type="image/jpeg"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body class="overflow-x-hidden">
+        <slot />
+
+        <script>
+            import Lenis from "lenis";
+            import { initAnimations } from "../scripts/animations";
+
+            // Initialize Lenis
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+            });
+
+            function raf(time: number) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+
+            // Transition animations - Run as soon as possible
+            const init = () => {
+                document.body.classList.add("loaded");
+                initAnimations();
+            };
+
+            if (document.readyState === "complete") {
+                init();
+            } else {
+                window.addEventListener("load", init);
+            }
+
+            // Smooth Scroll for links
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const href = (
+                        e.currentTarget as HTMLAnchorElement
+                    ).getAttribute("href");
+                    if (href) {
+                        lenis.scrollTo(href);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
+
+<style is:global>
+    :root {
+        --accent: #a68a64;
+    }
+
+    body {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    body.loaded {
+        opacity: 1;
+    }
+</style>

@@ -1,0 +1,322 @@
+---
+const images = [
+    {
+        src: "/gallery-1.jpeg",
+        alt: "Manicura Rusa",
+        title: "Manicura Rusa",
+        desc: "Técnica de precisión para una limpieza profunda.",
+        time: "1.5h",
+    },
+    {
+        src: "/gallery-2.jpeg",
+        alt: "Nail Art",
+        title: "Diseño Artístico",
+        desc: "Arte personalizado realizado totalmente a mano.",
+        time: "2.5h",
+    },
+    {
+        src: "/gallery-3.jpeg",
+        alt: "Chrome Nails",
+        title: "Efecto Espejo",
+        desc: "Acabado cromado de alto impacto y brillo.",
+        time: "2.0h",
+    },
+    {
+        src: "/gallery-4.jpeg",
+        alt: "Soft Ombré",
+        title: "Baby Boomer",
+        desc: "Difuminado elegante y natural para el día a día.",
+        time: "1.5h",
+    },
+    {
+        src: "/gallery-5.jpeg",
+        alt: "Luxury Gold",
+        title: "Detalles en Oro",
+        desc: "Incrustaciones de hoja de oro y piedras preciosas.",
+        time: "2.5h",
+    },
+    {
+        src: "/gallery-6.jpeg",
+        alt: "Minimalist",
+        title: "Minimalismo Puro",
+        desc: "Líneas finas y colores neutros para un look sobrio.",
+        time: "1.0h",
+    },
+    {
+        src: "/gallery-7.jpeg",
+        alt: "Encapsulado",
+        title: "Uñas Encapsuladas",
+        desc: "Diseños internos con flores secas o glitter.",
+        time: "3.0h",
+    },
+    {
+        src: "/gallery-8.jpeg",
+        alt: "Stiletto",
+        title: "Estructura Stiletto",
+        desc: "Forma audaz y alargada para un estilo único.",
+        time: "3.0h",
+    },
+    {
+        src: "/gallery-9.jpeg",
+        alt: "Matte Finish",
+        title: "Mate Elegante",
+        desc: "Acabado aterciopelado en tonos profundos.",
+        time: "1.5h",
+    },
+    {
+        src: "/gallery-10.jpeg",
+        alt: "French Tip",
+        title: "French Moderno",
+        desc: "El clásico reinventado con colores y formas.",
+        time: "1.5h",
+    },
+    {
+        src: "/gallery-12.jpeg",
+        alt: "Gel-X",
+        title: "Extensiones Gel-X",
+        desc: "Sistema de extensiones ultra-rápidas y ligeras.",
+        time: "1.5h",
+    },
+    {
+        src: "/gallery-13.jpeg",
+        alt: "Pedicura SPA",
+        title: "Pedicura de Lujo",
+        desc: "Cuidado integral para pies con exfoliación.",
+        time: "1.0h",
+    },
+    {
+        src: "/gallery-14.jpeg",
+        alt: "Acrílico",
+        title: "Esculpidas en Acrílico",
+        desc: "Máxima durabilidad y personalización total.",
+        time: "2.5h",
+    },
+    {
+        src: "/gallery-15.jpeg",
+        alt: "Nails Mix",
+        title: "Mix de Texturas",
+        desc: "Combinación de texturas brillantes y mates.",
+        time: "2.0h",
+    },
+];
+---
+
+<section id="galeria" class="py-20 md:py-28 overflow-hidden bg-brand-light">
+    <div class="container mx-auto px-6">
+        <div
+            class="flex flex-col md:flex-row justify-between items-end mb-12 gallery-header"
+        >
+            <div>
+                <span
+                    class="uppercase tracking-[0.3em] text-xs font-bold text-brand-primary mb-4 block"
+                    >Portafolio Visual</span
+                >
+                <h2 class="text-5xl md:text-6xl">Nuestro Trabajo</h2>
+            </div>
+            <p class="max-w-xs text-brand-dark/60 mt-6 md:mt-0">
+                Inspiración constante para tus próximas uñas. Calidad impecable
+                en cada trazo.
+            </p>
+        </div>
+
+        <div
+            class="grid grid-cols-4 md:grid-cols-12 gap-4 md:gap-8 auto-rows-[100px] md:auto-rows-[150px]"
+        >
+            {
+                images.map((img, index) => {
+                    // Define asymmetrical spans for a 12-column layout
+                    const spans = [
+                        "md:col-span-4 md:row-span-3", // 1
+                        "md:col-span-4 md:row-span-3", // 2
+                        "md:col-span-4 md:row-span-4", // 3
+                        "md:col-span-8 md:row-span-2", // 4
+                        "md:col-span-4 md:row-span-3", // 5
+                        "md:col-span-4 md:row-span-2", // 6
+                        "md:col-span-4 md:row-span-4", // 7
+                        "md:col-span-4 md:row-span-2", // 8
+                        "md:col-span-4 md:row-span-2", // 9
+                        "md:col-span-2 md:row-span-6", // 10
+                        "md:col-span-6 md:row-span-2", // 11
+                        "md:col-span-4 md:row-span-4", // 12
+                        "md:col-span-4 md:row-span-4", // 13
+                        "md:col-span-6 md:row-span-2", // 14
+                        "md:col-span-6 md:row-span-3", // 15
+                    ];
+
+                    return (
+                        <div
+                            class={`gallery-item relative overflow-hidden rounded-3xl group cursor-pointer ${spans[index] || "md:col-span-4 md:row-span-2"} col-span-4 row-span-2`}
+                            data-title={img.title}
+                            data-desc={img.desc}
+                            data-time={img.time}
+                            data-src={img.src}
+                        >
+                            <div class="parallax-container w-full h-[120%] absolute -top-[10%] left-0">
+                                <img
+                                    src={img.src}
+                                    alt={img.alt}
+                                    class="parallax-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                            </div>
+
+                            {/* Watermark Logo */}
+                            <div class="absolute bottom-6 right-6 opacity-0 group-hover:opacity-40 transition-all duration-500 pointer-events-none transform translate-y-2 group-hover:translate-y-0">
+                                <span class="text-brand-light font-serif text-lg tracking-tighter uppercase font-bold whitespace-nowrap">
+                                    <img
+                                        src="/logo.png"
+                                        alt="Luxury Nails"
+                                        class="w-16"
+                                    />
+                                </span>
+                            </div>
+
+                            {/* Hover Overlay */}
+                            <div class="absolute inset-0 bg-brand-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </div>
+                    );
+                })
+            }
+        </div>
+    </div>
+</section>
+
+{/* Modal Section */}
+<div
+    id="gallery-modal"
+    class="fixed inset-0 z-[100] hidden bg-brand-dark/95 backdrop-blur-md flex items-center justify-center p-4 md:p-10 transition-all duration-300"
+>
+    <button
+        id="close-modal"
+        class="absolute top-6 right-6 text-brand-light text-5xl hover:rotate-90 transition-transform duration-300"
+        >&times;</button
+    >
+
+    <div
+        class="bg-brand-light w-full max-w-5xl rounded-[30px] md:rounded-[50px] overflow-hidden flex flex-col md:flex-row shadow-2xl transform scale-95 opacity-0 transition-all duration-500 modal-content border border-brand-primary/20 max-h-[90vh] md:h-auto"
+    >
+        <div class="md:w-1/2 h-64 md:h-auto overflow-hidden">
+            <img
+                id="modal-img"
+                src=""
+                alt=""
+                class="w-full h-full object-cover"
+            />
+        </div>
+        <div
+            class="md:w-1/2 p-8 md:p-14 flex flex-col justify-center bg-brand-light flex-grow overflow-y-auto"
+        >
+            <h3 id="modal-title" class="text-3xl md:text-5xl mb-6 font-serif">
+            </h3>
+            <p
+                id="modal-desc"
+                class="text-brand-dark/70 mb-10 text-lg leading-relaxed"
+            >
+            </p>
+
+            <div class="space-y-4 mb-10">
+                <div
+                    class="flex justify-between items-center py-3 border-b border-brand-dark/10"
+                >
+                    <span
+                        class="font-bold uppercase tracking-widest text-xs text-brand-primary"
+                        >Atención</span
+                    >
+                    <span class="text-brand-dark">Personalizada</span>
+                </div>
+                <div
+                    class="flex justify-between items-center py-3 border-b border-brand-dark/10"
+                >
+                    <span
+                        class="font-bold uppercase tracking-widest text-xs text-brand-primary"
+                        >Duración</span
+                    >
+                    <span id="modal-time" class="text-brand-dark font-semibold"
+                    ></span>
+                </div>
+                <div
+                    class="flex justify-between items-center py-3 border-b border-brand-dark/10"
+                >
+                    <span
+                        class="font-bold uppercase tracking-widest text-xs text-brand-primary"
+                        >Estilo</span
+                    >
+                    <span class="text-brand-dark italic">Lux Boutique</span>
+                </div>
+            </div>
+
+            <a
+                href="#contacto"
+                id="modal-reserve"
+                class="bg-brand-primary text-brand-light text-center py-5 rounded-full uppercase tracking-[0.2em] text-xs font-bold hover:bg-brand-dark transition-all duration-300 transform hover:translate-y-[-2px] shadow-lg"
+            >
+                Reservar este Estilo
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById("gallery-modal");
+    const modalContent = modal?.querySelector(".modal-content");
+    const closeBtn = document.getElementById("close-modal");
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    const modalImg = document.getElementById("modal-img") as HTMLImageElement;
+    const modalTitle = document.getElementById("modal-title");
+    const modalDesc = document.getElementById("modal-desc");
+    const modalTime = document.getElementById("modal-time");
+    const modalReserve = document.getElementById("modal-reserve");
+
+    const openModal = (item: Element) => {
+        if (!modal || !modalContent) return;
+
+        const title = item.getAttribute("data-title");
+        const desc = item.getAttribute("data-desc");
+        const time = item.getAttribute("data-time");
+        const src = item.getAttribute("data-src");
+
+        if (modalImg && src) modalImg.src = src;
+        if (modalTitle && title) modalTitle.innerText = title;
+        if (modalDesc && desc) modalDesc.innerText = desc;
+        if (modalTime && time) modalTime.innerText = time;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        setTimeout(() => {
+            modalContent.classList.remove("scale-95", "opacity-0");
+            modalContent.classList.add("scale-100", "opacity-100");
+        }, 10);
+
+        document.body.style.overflow = "hidden";
+    };
+
+    const closeModal = () => {
+        if (!modal || !modalContent) return;
+
+        modalContent.classList.remove("scale-100", "opacity-100");
+        modalContent.classList.add("scale-95", "opacity-0");
+
+        setTimeout(() => {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+            document.body.style.overflow = "";
+        }, 300);
+    };
+
+    galleryItems.forEach((item) => {
+        item.addEventListener("click", () => openModal(item));
+    });
+
+    closeBtn?.addEventListener("click", closeModal);
+    modal?.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    modalReserve?.addEventListener("click", closeModal);
+
+    // Escape key to close
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+    });
+</script>

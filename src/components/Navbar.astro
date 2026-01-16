@@ -1,0 +1,66 @@
+---
+
+---
+
+<nav
+    id="navbar"
+    class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6"
+>
+    <div class="container mx-auto px-6 flex justify-between items-center">
+        <div
+            class="text-2xl font-serif tracking-tighter uppercase font-bold text-brand-dark"
+        >
+            <img src="/logo.png" alt="Luxury Nails" class="w-16" />
+        </div>
+
+        <div
+            class="hidden md:flex space-x-12 items-center uppercase text-xs tracking-widest font-semibold"
+        >
+            <a href="#inicio" class="hover:text-brand-primary transition-colors"
+                >Inicio</a
+            >
+            <a
+                href="#servicios"
+                class="hover:text-brand-primary transition-colors">Servicios</a
+            >
+            <a
+                href="#galeria"
+                class="hover:text-brand-primary transition-colors">Galería</a
+            >
+            <a
+                href="#contacto"
+                class="hover:text-brand-primary transition-colors">Contacto</a
+            >
+        </div>
+
+        <a  
+            href="#contacto"
+            class="bg-brand-primary text-brand-light px-8 py-3 rounded-full uppercase text-xs tracking-widest font-bold hover:bg-brand-dark transition-all duration-300"
+        >
+            Reservar
+        </a>
+    </div>
+</nav>
+
+<script>
+    const nav = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            nav?.classList.add(
+                "bg-brand-light/80",
+                "backdrop-blur-md",
+                "py-4",
+                "shadow-sm"
+            );
+            nav?.classList.remove("py-6");
+        } else {
+            nav?.classList.remove(
+                "bg-brand-light/80",
+                "backdrop-blur-md",
+                "py-4",
+                "shadow-sm"
+            );
+            nav?.classList.add("py-6");
+        }
+    });
+</script>

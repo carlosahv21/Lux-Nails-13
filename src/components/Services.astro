@@ -1,0 +1,77 @@
+---
+const services = [
+    {
+        name: "Manicura Clásica",
+        price: "$25",
+        desc: "Cuidado completo de uñas y cutículas con esmaltado tradicional.",
+    },
+    {
+        name: "Uñas de Gel",
+        price: "$45",
+        desc: "Acabado brillante y duradero con tecnología LED de última generación.",
+    },
+    {
+        name: "Acrílicas Esculpidas",
+        price: "$60",
+        desc: "Longitud y forma personalizadas con técnicas de esculpido premium.",
+    },
+    {
+        name: "Pedicura Spa",
+        price: "$40",
+        desc: "Tratamiento hidratante y relajante para pies con exfoliación orgánica.",
+    },
+    {
+        name: "Nail Art Diseño",
+        price: "Desde $15",
+        desc: "Decoraciones exclusivas a mano alzada por nuestros artistas.",
+    },
+    {
+        name: "Retirado y Cuidado",
+        price: "$10",
+        desc: "Proceso seguro para mantener la salud natural de tus uñas.",
+    },
+];
+---
+
+<section id="servicios" class="py-20 md:py-28 bg-brand-secondary/30">
+    <div class="container mx-auto px-6">
+        <div class="max-w-3xl mb-12 service-header">
+            <span
+                class="uppercase tracking-[0.3em] text-xs font-bold text-brand-primary mb-4 block underline decoration-brand-dark underline-offset-8"
+                >Nuestra Carta</span
+            >
+            <h2 class="text-5xl md:text-6xl mb-6">Menú de Belleza</h2>
+            <p class="text-brand-dark/60 text-lg">
+                Selección de tratamientos diseñados para el bienestar de tus
+                manos y pies.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-x-20 gap-y-12">
+            {
+                services.map((service) => (
+                    <div class="service-item border-b border-brand-dark/10 pb-8 flex justify-between items-start group">
+                        <div class="max-w-md">
+                            <h3 class="text-2xl mb-2 group-hover:text-brand-primary transition-colors">
+                                {service.name}
+                            </h3>
+                            <p class="text-sm text-brand-dark/60 italic">
+                                {service.desc}
+                            </p>
+                        </div>
+                        <div class="text-2xl font-serif text-brand-primary font-bold">
+                            {service.price}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="mt-20 text-center service-footer">
+            <p class="italic text-brand-dark/70 mb-8 max-w-xl mx-auto">
+                "El lujo no es solo lo que ves, sino cómo te hace sentir.
+                Permítenos consentirte como te mereces."
+            </p>
+        </div>
+    </div>
+</section>
