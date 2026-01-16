@@ -33,35 +33,37 @@ const services = [
 ];
 ---
 
-<section id="servicios" class="py-20 md:py-28 bg-brand-secondary/30">
+<section id="servicios" class="py-20 md:py-28 bg-brand-secondary/30 overflow-hidden">
     <div class="container mx-auto px-6">
         <div class="max-w-3xl mb-12 service-header">
-            <span
-                class="uppercase tracking-[0.3em] text-xs font-bold text-brand-primary mb-4 block underline decoration-brand-dark underline-offset-8"
-                >Nuestra Carta</span
-            >
+            <span class="uppercase tracking-[0.3em] text-xs font-bold text-brand-primary mb-4 block underline decoration-brand-dark underline-offset-8">
+                Nuestra Carta
+            </span>
             <h2 class="text-5xl md:text-6xl mb-6">Menú de Belleza</h2>
             <p class="text-brand-dark/60 text-lg">
-                Selección de tratamientos diseñados para el bienestar de tus
-                manos y pies.
+                Selección de tratamientos diseñados para el bienestar de tus manos y pies.
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-x-20 gap-y-12">
             {
                 services.map((service) => (
-                    <div class="service-item border-b border-brand-dark/10 pb-8 flex justify-between items-start group">
+                    <div class="service-item relative pb-8 flex justify-between items-start group">
                         <div class="max-w-md">
-                            <h3 class="text-2xl mb-2 group-hover:text-brand-primary transition-colors">
+                            <h3 class="text-2xl mb-2 group-hover:text-brand-primary transition-colors duration-300">
                                 {service.name}
                             </h3>
                             <p class="text-sm text-brand-dark/60 italic">
                                 {service.desc}
                             </p>
                         </div>
+                        
                         <div class="text-2xl font-serif text-brand-primary font-bold">
                             {service.price}
                         </div>
+
+                        {/* Línea decorativa que animamos con GSAP (scaleX) */}
+                        <div class="service-item-line absolute bottom-0 left-0 w-full h-[1px] bg-brand-dark/20 origin-left"></div>
                     </div>
                 ))
             }
