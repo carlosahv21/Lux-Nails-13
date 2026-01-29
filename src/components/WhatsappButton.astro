@@ -9,7 +9,7 @@ const message = [
     "- Servicio:",
     "- Dia y hora:",
     "",
-    "Muchas gracias."
+    "Muchas gracias.",
 ].join("\n");
 
 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -18,7 +18,7 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mess
 <a
     href={whatsappUrl}
     target="_blank"
-    class="whatsapp-btn fixed bottom-10 right-10 w-16 h-16 bg-[#25D366] rounded-full shadow-2xl z-[60] flex items-center justify-center hover:scale-110 transition-transform"
+    class="whatsapp-btn fixed bottom-10 right-10 w-16 h-16 bg-[#25D366] rounded-full shadow-2xl z-[60] flex items-center justify-center hover:scale-110"
     aria-label="Contactar por WhatsApp"
 >
     <svg

@@ -108,22 +108,24 @@ export function initAnimations() {
         });
     }
 
-    // 5. Whatsapp Button
+    // 5. Whatsapp Button - Aparece antes para mejor UX
     if (document.querySelector('.whatsapp-btn')) {
-        gsap.to(".whatsapp-pulse", {
-            scale: 1.8,
-            opacity: 0,
-            duration: 1.5,
-            repeat: -1,
-            ease: "sine.out"
-        });
-
         gsap.from(".whatsapp-btn", {
             scale: 0,
             opacity: 0,
             duration: 0.8,
-            delay: 1.2,
-            ease: "back.out(1.7)"
+            delay: 0.4, // Reducido para que se vea antes
+            ease: "back.out(1.7)",
+            onComplete: () => {
+                // Iniciamos el pulso solo cuando el botón es visible
+                gsap.to(".whatsapp-pulse", {
+                    scale: 1.8,
+                    opacity: 0,
+                    duration: 1.5,
+                    repeat: -1,
+                    ease: "sine.out"
+                });
+            }
         });
     }
 }
